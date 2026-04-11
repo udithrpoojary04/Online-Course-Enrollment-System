@@ -5,6 +5,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class RoleSpecificController {
@@ -13,10 +15,23 @@ public class RoleSpecificController {
     private com.system.course.repository.EnrollmentRepository enrollmentRepository;
     @org.springframework.beans.factory.annotation.Autowired
     private com.system.course.repository.CourseRepository courseRepository;
+    @org.springframework.beans.factory.annotation.Autowired
+    private com.system.course.repository.UserRepository userRepository;
 
     @GetMapping("/admin/dashboard")
     public String adminDashboard(@AuthenticationPrincipal CustomUserDetails userDetails, Model model) {
         model.addAttribute("user", userDetails.getUser());
+        
+        long totalUsers = userRepository.count();
+        model.addAttribute("totalUsers", totalUsers);
+        
+        java.util.List<com.system.course.entity.Enrollment> allEnrollments = enrollmentRepository.findAll();
+        java.math.BigDecimal totalRevenue = allEnrollments.stream()
+            .map(e -> e.getCourse().getPrice())
+            .filter(java.util.Objects::nonNull)
+            .reduce(java.math.BigDecimal.ZERO, java.math.BigDecimal::add);
+        model.addAttribute("totalRevenue", totalRevenue);
+        
         return "admin_dashboard";
     }
 
@@ -43,5 +58,24 @@ public class RoleSpecificController {
         model.addAttribute("activeCourseCount", enrollments.size());
         
         return "student_dashboard";
+    }
+
+    @PostMapping("/student/enroll")
+    public String enrollInCourse(@RequestParam("courseId") Long courseId,
+                                 @AuthenticationPrincipal CustomUserDetails userDetails) {
+        com.system.course.entity.User student = userDetails.getUser();
+        com.system.course.entity.Course course = courseRepository.findById(courseId)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid course ID"));
+
+        if (!enrollmentRepository.existsByStudentAndCourse(student, course)) {
+            com.system.course.entity.Enrollment enrollment = new com.system.course.entity.Enrollment();
+            enrollment.setStudent(student);
+            enrollment.setCourse(course);
+            enrollment.setProgressPercentage(0);
+            enrollmentRepository.save(enrollment);
+            return "redirect:/student/dashboard?enrolled=true";
+        }
+        
+        return "redirect:/student/dashboard?error=already_enrolled";
     }
 }

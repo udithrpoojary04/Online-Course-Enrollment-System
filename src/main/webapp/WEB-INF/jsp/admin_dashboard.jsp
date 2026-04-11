@@ -34,13 +34,13 @@
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
                     <h5>Total Users</h5>
-                    <div class="stat-value">0</div>
+                    <div class="stat-value">${totalUsers}</div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
                     <h5>Total Revenue</h5>
-                    <div class="stat-value text-success">$0</div>
+                    <div class="stat-value text-success">&#8377;${totalRevenue}</div>
                 </div>
             </div>
             <div class="col-md-4">

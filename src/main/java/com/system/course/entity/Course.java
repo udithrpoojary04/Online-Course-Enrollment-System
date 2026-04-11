@@ -24,6 +24,9 @@ public class Course {
     
     private Integer durationInWeeks;
 
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    private java.util.List<StudyMaterial> materials = new java.util.ArrayList<>();
+
     public Course() {}
 
     public Long getId() { return id; }
@@ -43,4 +46,7 @@ public class Course {
 
     public Integer getDurationInWeeks() { return durationInWeeks; }
     public void setDurationInWeeks(Integer durationInWeeks) { this.durationInWeeks = durationInWeeks; }
+
+    public java.util.List<StudyMaterial> getMaterials() { return materials; }
+    public void setMaterials(java.util.List<StudyMaterial> materials) { this.materials = materials; }
 }

@@ -95,7 +95,7 @@
                                         <td class="fw-bold" style="color: var(--text-main);">${enrollment.course.title}</td>
                                         <td>${enrollment.course.instructor.fullName}</td>
                                         <td>${enrollment.progressPercentage}%</td>
-                                        <td><button class="btn btn-sm btn-primary">Go to Course</button></td>
+                                        <td><a href="/student/course/${enrollment.course.id}" class="btn btn-sm btn-primary">Go to Course</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

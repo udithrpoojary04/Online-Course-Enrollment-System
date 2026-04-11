@@ -21,7 +21,25 @@ public class Enrollment {
     private Integer progressPercentage = 0;
     
     private LocalDateTime enrollmentDate;
+
+    @ManyToMany
+    @JoinTable(
+        name = "enrollment_completed_materials",
+        joinColumns = @JoinColumn(name = "enrollment_id"),
+        inverseJoinColumns = @JoinColumn(name = "material_id")
+    )
+    private java.util.Set<StudyMaterial> completedMaterials = new java.util.HashSet<>();
     
+    public void calculateProgress() {
+        if (course == null || course.getMaterials().isEmpty()) {
+            this.progressPercentage = 0;
+            return;
+        }
+        int total = course.getMaterials().size();
+        int completed = completedMaterials.size();
+        this.progressPercentage = (completed * 100) / total;
+    }
+
     @PrePersist
     protected void onCreate() {
         enrollmentDate = LocalDateTime.now();
@@ -43,4 +61,7 @@ public class Enrollment {
 
     public LocalDateTime getEnrollmentDate() { return enrollmentDate; }
     public void setEnrollmentDate(LocalDateTime enrollmentDate) { this.enrollmentDate = enrollmentDate; }
+
+    public java.util.Set<StudyMaterial> getCompletedMaterials() { return completedMaterials; }
+    public void setCompletedMaterials(java.util.Set<StudyMaterial> completedMaterials) { this.completedMaterials = completedMaterials; }
 }

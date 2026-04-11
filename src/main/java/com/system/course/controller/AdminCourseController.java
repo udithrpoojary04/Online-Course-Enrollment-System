@@ -2,8 +2,10 @@ package com.system.course.controller;
 
 import com.system.course.entity.Course;
 import com.system.course.entity.Role;
+import com.system.course.entity.StudyMaterial;
 import com.system.course.entity.User;
 import com.system.course.repository.CourseRepository;
+import com.system.course.repository.StudyMaterialRepository;
 import com.system.course.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class AdminCourseController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private StudyMaterialRepository studyMaterialRepository;
+
     @GetMapping
     public String listCourses(Model model) {
         List<Course> courses = courseRepository.findAll();
@@ -44,13 +49,33 @@ public class AdminCourseController {
     @PostMapping("/new")
     public String addCourse(@ModelAttribute("course") Course course, 
                             @RequestParam("instructorId") Long instructorId,
+                            @RequestParam(value = "materialTitle", required = false) List<String> materialTitles,
+                            @RequestParam(value = "materialUrl", required = false) List<String> materialUrls,
                             Model model) {
         try {
             User instructor = userRepository.findById(instructorId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid instructor ID"));
             
             course.setInstructor(instructor);
-            courseRepository.save(course);
+            
+            // Save the course first so we have an ID
+            Course savedCourse = courseRepository.save(course);
+            
+            if (materialTitles != null && materialUrls != null) {
+                for (int i = 0; i < materialTitles.size(); i++) {
+                    String title = materialTitles.get(i);
+                    String url = materialUrls.get(i);
+                    
+                    if (title != null && !title.trim().isEmpty() && url != null && !url.trim().isEmpty()) {
+                        StudyMaterial material = new StudyMaterial();
+                        material.setTitle(title);
+                        material.setContentUrl(url);
+                        material.setCourse(savedCourse);
+                        studyMaterialRepository.save(material);
+                    }
+                }
+            }
+            
             return "redirect:/admin/courses?success=Course added successfully";
         } catch (Exception e) {
             model.addAttribute("error", "Failed to add course: " + e.getMessage());

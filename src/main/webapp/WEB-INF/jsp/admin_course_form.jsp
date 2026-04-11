@@ -88,8 +88,57 @@
                     </div>
 
                     <hr>
+                    
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">Study materials (Videos/Links)</h5>
+                            <button type="button" class="btn btn-sm btn-outline-info" onclick="addMaterial()">+ Add Material</button>
+                        </div>
+                        <div id="materials-container">
+                            <div class="row g-2 mb-2 material-row">
+                                <div class="col-md-5">
+                                    <input type="text" name="materialTitle" class="form-control form-control-sm" placeholder="Material Title (e.g., Intro Video)">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="materialUrl" class="form-control form-control-sm" placeholder="Material URL (e.g., https://youtube.com/...)">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-sm btn-danger w-100" onclick="removeMaterial(this)">&times;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="d-flex justify-content-between mt-4">
+                    <hr>
+
+                    <script>
+                        function addMaterial() {
+                            const container = document.getElementById('materials-container');
+                            const row = document.createElement('div');
+                            row.className = 'row g-2 mb-2 material-row';
+                            row.innerHTML = `
+                                <div class="col-md-5">
+                                    <input type="text" name="materialTitle" class="form-control form-control-sm" placeholder="Material Title">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="materialUrl" class="form-control form-control-sm" placeholder="Material URL">
+                                </div>
+                                <div class="col-md-1">
+                                    <button type="button" class="btn btn-sm btn-danger w-100" onclick="removeMaterial(this)">&times;</button>
+                                </div>
+                            `;
+                            container.appendChild(row);
+                        }
+
+                        function removeMaterial(btn) {
+                            const row = btn.closest('.material-row');
+                            if (document.querySelectorAll('.material-row').length > 1) {
+                                row.remove();
+                            } else {
+                                row.querySelectorAll('input').forEach(input => input.value = '');
+                            }
+                        }
+                    </script>
                         <a href="/admin/courses" class="btn btn-secondary">Cancel</a>
                         <button type="submit" class="btn btn-primary px-4" ${empty instructors ? 'disabled' : ''}>Save Course</button>
                     </div>

@@ -44,12 +44,8 @@ public class SecurityConfig {
     @Bean
     @Order(1)
     public SecurityFilterChain adminSecurityFilterChain(HttpSecurity http) throws Exception {
-        org.springframework.security.web.context.HttpSessionSecurityContextRepository adminContextRepo = new org.springframework.security.web.context.HttpSessionSecurityContextRepository();
-        adminContextRepo.setSpringSecurityContextKey("SPRING_SECURITY_CONTEXT_ADMIN");
-
         http
             .securityMatcher("/admin/**")
-            .securityContext(context -> context.securityContextRepository(adminContextRepo))
             .authorizeHttpRequests(auth -> auth
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                 .requestMatchers("/admin/login").permitAll()
@@ -65,7 +61,7 @@ public class SecurityConfig {
             .logout(logout -> logout
                 .logoutUrl("/admin/logout")
                 .logoutSuccessUrl("/admin/login?logout")
-                .invalidateHttpSession(false)
+                .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .permitAll()
             );
@@ -95,7 +91,7 @@ public class SecurityConfig {
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(false)
+                .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .permitAll()
             );
