@@ -1,14 +1,17 @@
 package com.system.course.config;
 
+import com.system.course.security.CustomUserDetails;
 import com.system.course.security.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import jakarta.servlet.DispatcherType;
 
 @Configuration
@@ -34,13 +37,53 @@ public class SecurityConfig {
         return authProvider;
     }
 
+    /**
+     * Admin security filter chain — matched first (Order 1).
+     * Handles /admin/** URLs with a dedicated admin login page.
+     */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    @Order(1)
+    public SecurityFilterChain adminSecurityFilterChain(HttpSecurity http) throws Exception {
+        org.springframework.security.web.context.HttpSessionSecurityContextRepository adminContextRepo = new org.springframework.security.web.context.HttpSessionSecurityContextRepository();
+        adminContextRepo.setSpringSecurityContextKey("SPRING_SECURITY_CONTEXT_ADMIN");
+
+        http
+            .securityMatcher("/admin/**")
+            .securityContext(context -> context.securityContextRepository(adminContextRepo))
+            .authorizeHttpRequests(auth -> auth
+                .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
+                .requestMatchers("/admin/login").permitAll()
+                .anyRequest().hasRole("ADMIN")
+            )
+            .formLogin(form -> form
+                .loginPage("/admin/login")
+                .loginProcessingUrl("/admin/login")
+                .defaultSuccessUrl("/admin/dashboard", true)
+                .failureUrl("/admin/login?error")
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutUrl("/admin/logout")
+                .logoutSuccessUrl("/admin/login?logout")
+                .invalidateHttpSession(false)
+                .clearAuthentication(true)
+                .permitAll()
+            );
+
+        return http.build();
+    }
+
+    /**
+     * User security filter chain — matched second (Order 2).
+     * Handles all other URLs with the normal user login page.
+     */
+    @Bean
+    @Order(2)
+    public SecurityFilterChain userSecurityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**", "/register", "/login", "/", "/error").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/instructor/**").hasRole("INSTRUCTOR")
                 .requestMatchers("/student/**").hasRole("STUDENT")
                 .anyRequest().authenticated()
@@ -52,9 +95,11 @@ public class SecurityConfig {
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
+                .invalidateHttpSession(false)
+                .clearAuthentication(true)
                 .permitAll()
             );
-            
+
         return http.build();
     }
 }

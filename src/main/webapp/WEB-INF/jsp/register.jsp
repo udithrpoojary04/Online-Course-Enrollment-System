@@ -15,15 +15,36 @@
     <div class="bg-orb orb-2" style="animation-delay: -7s;"></div>
     <div class="bg-orb orb-3" style="animation-delay: -12s;"></div>
 
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
     <div class="auth-wrapper py-5">
         <div class="container d-flex justify-content-center">
             <div class="col-md-6">
                 <div class="glass-panel text-center fade-up">
+                    <!-- Register Icon -->
+                    <div class="fade-up delay-1" style="margin-bottom: 1.5rem;">
+                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; border-radius: 22px; background: linear-gradient(135deg, rgba(255, 176, 102, 0.1), rgba(167, 139, 250, 0.1)); border: 1px solid rgba(255, 176, 102, 0.15);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="url(#regGrad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <defs>
+                                    <linearGradient id="regGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#ffb066"/>
+                                        <stop offset="100%" style="stop-color:#a78bfa"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <line x1="20" y1="8" x2="20" y2="14"/>
+                                <line x1="23" y1="11" x2="17" y2="11"/>
+                            </svg>
+                        </div>
+                    </div>
+
                     <h1 class="auth-title fade-up delay-1">Create Account</h1>
                     <p class="auth-subtitle fade-up delay-1">Join the elite learning platform today.</p>
                     
                     <c:if test="${error != null}">
-                        <div class="alert alert-danger fade show fade-up delay-1" role="alert" style="border-radius: 12px;">
+                        <div class="alert alert-danger fade show fade-up delay-1" role="alert">
                             ${error}
                         </div>
                     </c:if>
@@ -56,7 +77,7 @@
                         </div>
                     </form>
                     
-                    <div class="mt-4 text-muted fade-up delay-4" style="font-weight: 500;">
+                    <div class="mt-4 fade-up delay-4" style="font-weight: 500; color: var(--text-muted);">
                         Already have an account? <a href="/login" class="custom-link">Sign In</a>
                     </div>
                 </div>

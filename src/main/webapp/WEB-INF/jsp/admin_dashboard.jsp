@@ -4,19 +4,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Elite Academy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Background Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
+    <div class="grid-overlay"></div>
+
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="#">Elite Academy Admin Portal</a>
-            <div class="d-flex">
-                <span class="text-danger fw-bold me-3 mt-2">Admin: ${user.username}</span>
-                <form action="/logout" method="post">
+            <div class="d-flex align-items-center">
+                <span class="me-3" style="color: var(--primary); font-weight: 700;">Admin: ${user.username}</span>
+                <form action="/admin/logout" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button type="submit" class="btn btn-outline-light btn-sm mt-1">Logout</button>
+                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
                 </form>
             </div>
         </div>
@@ -26,19 +33,19 @@
         <div class="row g-4 mb-4">
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
-                    <h5 class="text-muted mb-2">Total Users</h5>
+                    <h5>Total Users</h5>
                     <div class="stat-value">0</div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
-                    <h5 class="text-muted mb-2">Total Revenue</h5>
+                    <h5>Total Revenue</h5>
                     <div class="stat-value text-success">$0</div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
-                    <h5 class="text-muted mb-2">Platform Health</h5>
+                    <h5>Platform Health</h5>
                     <div class="stat-value text-info">100%</div>
                 </div>
             </div>
@@ -48,15 +55,16 @@
             <div class="col-md-12">
                 <div class="dashboard-card">
                     <h4>System Administration Shortcuts</h4>
-                    <hr class="border-secondary">
+                    <hr>
                     <div class="d-grid gap-3 d-md-flex mt-4">
                         <button class="btn btn-primary px-4">Manage Users</button>
-                        <button class="btn btn-secondary px-4">Review Courses</button>
+                        <a href="/admin/courses" class="btn btn-secondary px-4">Review Courses</a>
                         <button class="btn btn-danger px-4">System Settings</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
