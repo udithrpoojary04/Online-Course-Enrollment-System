@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import jakarta.servlet.DispatcherType;
 
 @Configuration
@@ -44,6 +45,9 @@ public class SecurityConfig {
     @Bean
     @Order(1)
     public SecurityFilterChain adminSecurityFilterChain(HttpSecurity http) throws Exception {
+        HttpSessionSecurityContextRepository adminRepo = new HttpSessionSecurityContextRepository();
+        adminRepo.setSpringSecurityContextKey("SPRING_SECURITY_CONTEXT_ADMIN");
+
         http
             .securityMatcher("/admin/**")
             .authorizeHttpRequests(auth -> auth
@@ -51,6 +55,7 @@ public class SecurityConfig {
                 .requestMatchers("/admin/login").permitAll()
                 .anyRequest().hasRole("ADMIN")
             )
+            .securityContext(context -> context.securityContextRepository(adminRepo))
             .formLogin(form -> form
                 .loginPage("/admin/login")
                 .loginProcessingUrl("/admin/login")
@@ -61,7 +66,7 @@ public class SecurityConfig {
             .logout(logout -> logout
                 .logoutUrl("/admin/logout")
                 .logoutSuccessUrl("/admin/login?logout")
-                .invalidateHttpSession(true)
+                .invalidateHttpSession(false)
                 .clearAuthentication(true)
                 .permitAll()
             );
@@ -91,7 +96,7 @@ public class SecurityConfig {
             )
             .logout(logout -> logout
                 .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true)
+                .invalidateHttpSession(false)
                 .clearAuthentication(true)
                 .permitAll()
             );
