@@ -69,9 +69,9 @@
                                     <td class="fw-bold" style="color: var(--text-main);">${course.title}</td>
                                     <td>${course.instructor != null ? course.instructor.fullName : 'Unassigned'}</td>
                                     <td>${course.durationInWeeks} wks</td>
-                                    <td>$${course.price}</td>
+                                    <td>₹${course.price}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-secondary">Edit</button>
+                                        <a href="/admin/courses/edit/${course.id}" class="btn btn-sm btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 10px;">✏️ Edit</a>
                                     </td>
                                 </tr>
                             </c:forEach>

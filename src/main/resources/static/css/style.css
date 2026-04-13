@@ -433,6 +433,11 @@ a.custom-link:hover {
 .table td {
   border-bottom-color: rgba(255, 255, 255, 0.04) !important;
   vertical-align: middle;
+  color: #e2e8f0 !important;
+}
+
+.table th {
+  color: #cbd5e1 !important;
 }
 
 /* Horizontal Rules */
