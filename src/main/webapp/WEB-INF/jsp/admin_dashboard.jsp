@@ -59,7 +59,7 @@
                     <div class="d-grid gap-3 d-md-flex mt-4">
                         <button class="btn btn-primary px-4">Manage Users</button>
                         <a href="/admin/courses" class="btn btn-secondary px-4">Review Courses</a>
-                        <a href="/admin/instructors" class="btn btn-info px-4">Manage Instructors</a>
+                        <a href="/admin/instructors" class="btn btn-primary px-4">Manage Instructors</a>
                         <button class="btn btn-danger px-4">System Settings</button>
                     </div>
                 </div>
