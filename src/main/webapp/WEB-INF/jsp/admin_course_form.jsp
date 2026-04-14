@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/admin/courses">Courses</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/instructors">Instructors</a>
+                    </li>
                 </ul>
             </div>
             <div class="d-flex align-items-center">

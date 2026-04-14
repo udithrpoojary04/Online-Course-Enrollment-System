@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Management - Elite Academy Admin</title>
+    <title>Instructor Management - Elite Academy Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
 </head>
@@ -25,10 +25,10 @@
                         <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/admin/courses">Courses</a>
+                        <a class="nav-link" href="/admin/courses">Courses</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/instructors">Instructors</a>
+                        <a class="nav-link active" href="/admin/instructors">Instructors</a>
                     </li>
                 </ul>
             </div>
@@ -46,41 +46,46 @@
             <div class="col-md-12">
                 <div class="dashboard-card">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4>Course Directory</h4>
-                        <a href="/admin/courses/new" class="btn btn-primary">+ Add New Course</a>
+                        <h4>Instructor Directory</h4>
+                        <a href="/admin/instructors/new" class="btn btn-primary">+ Add New Instructor</a>
                     </div>
                     
                     <c:if test="${param.success != null}">
                         <div class="alert alert-success mt-3">${param.success}</div>
+                    </c:if>
+                    <c:if test="${param.error != null}">
+                        <div class="alert alert-danger mt-3">${param.error}</div>
                     </c:if>
 
                     <table class="table mt-4">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Course Title</th>
-                                <th>Instructor</th>
-                                <th>Duration</th>
-                                <th>Price</th>
+                                <th>Full Name</th>
+                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="course" items="${courses}">
+                            <c:forEach var="instructor" items="${instructors}">
                                 <tr>
-                                    <td>${course.id}</td>
-                                    <td class="fw-bold" style="color: var(--text-main);">${course.title}</td>
-                                    <td>${course.instructor != null ? course.instructor.fullName : 'Unassigned'}</td>
-                                    <td>${course.durationInWeeks} wks</td>
-                                    <td>₹${course.price}</td>
+                                    <td>${instructor.id}</td>
+                                    <td class="fw-bold" style="color: var(--text-main);">Prof. ${instructor.fullName}</td>
+                                    <td>${instructor.username}</td>
+                                    <td>${instructor.email}</td>
                                     <td>
-                                        <a href="/admin/courses/edit/${course.id}" class="btn btn-sm btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 10px;">✏️ Edit</a>
+                                        <a href="/admin/instructors/edit/${instructor.id}" class="btn btn-sm btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 10px;">✏️ Edit</a>
+                                        <form action="/admin/instructors/delete/${instructor.id}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this instructor?');">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                            <button type="submit" class="btn btn-sm btn-danger" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 10px;">🗑️ Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             </c:forEach>
-                            <c:if test="${empty courses}">
+                            <c:if test="${empty instructors}">
                                 <tr>
-                                    <td colspan="6" class="text-center py-4" style="color: var(--text-muted);">No courses found. Click 'Add New Course' to begin.</td>
+                                    <td colspan="5" class="text-center py-4" style="color: var(--text-muted);">No instructors found. Click 'Add New Instructor' to begin.</td>
                                 </tr>
                             </c:if>
                         </tbody>
