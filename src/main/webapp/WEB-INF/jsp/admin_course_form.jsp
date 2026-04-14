@@ -25,6 +25,9 @@
                         <a class="nav-link" href="/admin/dashboard">Dashboard</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/admin/users">Users</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="/admin/courses">Courses</a>
                     </li>
                     <li class="nav-item">

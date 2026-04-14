@@ -16,4 +16,6 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     Optional<Enrollment> findByStudentAndCourse(User student, Course course);
     boolean existsByStudentAndCourse(User student, Course course);
     long countByStudent(User student);
+    @org.springframework.transaction.annotation.Transactional
+    void deleteByStudent(User student);
 }
