@@ -8,6 +8,7 @@
     <title>Instructor Management - Elite Academy Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/theme-toggle.js"></script>
 </head>
 <body class="admin-theme">
     <!-- Background Orbs -->
@@ -36,6 +37,7 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center">
+                <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
                 <form action="/admin/logout" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>

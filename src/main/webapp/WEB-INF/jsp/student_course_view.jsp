@@ -9,6 +9,7 @@
     <title>${course.title} - Content - Elite Academy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/theme-toggle.js"></script>
     <style>
         .material-card {
             background: rgba(30, 30, 50, 0.4);
@@ -54,6 +55,7 @@
         <div class="container">
             <a class="navbar-brand" href="/student/dashboard">Elite Academy</a>
             <div class="d-flex align-items-center">
+                <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
                 <a href="/student/dashboard" class="btn btn-outline-light btn-sm me-3">Back to Dashboard</a>
             </div>
         </div>

@@ -8,8 +8,11 @@
     <title>Admin Login - Elite Academy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
+    <script src="/js/theme-toggle.js"></script>
 </head>
 <body class="admin-login-body">
+    <!-- Theme Toggle -->
+    <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" style="position:fixed; top:1.5rem; right:1.5rem; z-index:1000;">☀️</button>
     <!-- Admin Animated Orbs -->
     <div class="bg-orb admin-orb-1"></div>
     <div class="bg-orb admin-orb-2"></div>
