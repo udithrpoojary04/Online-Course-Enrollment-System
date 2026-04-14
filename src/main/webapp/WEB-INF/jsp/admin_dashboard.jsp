@@ -56,11 +56,11 @@
                 <div class="dashboard-card">
                     <h4>System Administration Shortcuts</h4>
                     <hr>
-                    <div class="d-grid gap-3 d-md-flex mt-4">
-                        <button class="btn btn-primary px-4">Manage Users</button>
-                        <a href="/admin/courses" class="btn btn-secondary px-4">Review Courses</a>
-                        <a href="/admin/instructors" class="btn btn-primary px-4">Manage Instructors</a>
-                        <button class="btn btn-danger px-4">System Settings</button>
+                    <div class="d-grid gap-3 d-md-flex align-items-stretch mt-4">
+                        <a href="#" class="btn btn-primary px-4" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; line-height:1.5;">Manage Users</a>
+                        <a href="/admin/courses" class="btn btn-secondary px-4" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; line-height:1.5;">Review Courses</a>
+                        <a href="/admin/instructors" class="btn px-4" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; line-height:1.5; background:rgba(167,139,250,0.15); border:1px solid rgba(167,139,250,0.3); color:#c4b5fd; font-weight:600; font-size:1.05rem; border-radius:14px; transition:all 0.3s;">Manage Instructors</a>
+                        <a href="#" class="btn btn-danger px-4" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; line-height:1.5;">System Settings</a>
                     </div>
                 </div>
             </div>
