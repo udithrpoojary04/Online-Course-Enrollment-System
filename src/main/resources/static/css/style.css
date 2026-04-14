@@ -151,6 +151,33 @@ body, .dashboard-card, .glass-panel, .navbar, .form-control, .table, .btn-second
 [data-theme="light"] .form-control {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 }
+[data-theme="light"] .dashboard-card {
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .dashboard-card:hover {
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1);
+}
+[data-theme="light"] .glass-panel {
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+[data-theme="light"] .glass-panel:hover {
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+[data-theme="light"] .navbar {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+[data-theme="light"] .btn-primary {
+  box-shadow: 0 2px 8px -2px rgba(255, 176, 102, 0.2);
+}
+[data-theme="light"] .btn-primary:hover {
+  box-shadow: 0 4px 12px -3px rgba(255, 176, 102, 0.25);
+}
+[data-theme="light"] .admin-glass-panel {
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.08);
+}
+[data-theme="light"] .admin-glass-panel:hover {
+  box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.12);
+}
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
