@@ -53,13 +53,17 @@ public class RoleSpecificController {
         java.util.List<com.system.course.entity.Enrollment> enrollments = enrollmentRepository.findByStudent(student);
         model.addAttribute("enrollments", enrollments);
         
+        long completedCourseCount = enrollments.stream().filter(e -> e.isCompleted()).count();
+        long activeCourseCount = enrollments.size() - completedCourseCount;
+        
         java.util.List<com.system.course.entity.Course> allCourses = courseRepository.findAll();
         java.util.List<com.system.course.entity.Course> availableCourses = allCourses.stream()
             .filter(course -> enrollments.stream().noneMatch(e -> e.getCourse().getId().equals(course.getId())))
             .collect(java.util.stream.Collectors.toList());
             
         model.addAttribute("availableCourses", availableCourses);
-        model.addAttribute("activeCourseCount", enrollments.size());
+        model.addAttribute("activeCourseCount", activeCourseCount);
+        model.addAttribute("completedCourseCount", completedCourseCount);
         
         return "student_dashboard";
     }

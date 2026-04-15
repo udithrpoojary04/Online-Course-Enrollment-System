@@ -346,7 +346,7 @@
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
                     <h5>Completed</h5>
-                    <div class="stat-value text-success">0</div>
+                    <div class="stat-value text-success">${completedCourseCount != null ? completedCourseCount : 0}</div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -384,8 +384,13 @@
                                     <tr>
                                         <td class="fw-bold" style="color: var(--text-main);">${enrollment.course.title}</td>
                                         <td>${enrollment.course.instructor.fullName}</td>
-                                        <td>${enrollment.progressPercentage}%</td>
-                                        <td><a href="/student/course/${enrollment.course.id}" class="btn btn-sm btn-primary">Go to Course</a></td>
+                                        <td>
+                                            ${enrollment.progressPercentage}%
+                                            <c:if test="${enrollment.completed}">
+                                                <span class="badge bg-success ms-2">✓ Completed</span>
+                                            </c:if>
+                                        </td>
+                                        <td><a href="/student/course/${enrollment.course.id}" class="btn btn-sm btn-primary">${enrollment.completed ? 'Review' : 'Go to Course'}</a></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

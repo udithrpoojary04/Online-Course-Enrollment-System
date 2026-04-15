@@ -20,6 +20,8 @@ public class Enrollment {
     
     private Integer progressPercentage = 0;
     
+    private boolean completed = false;
+    
     private LocalDateTime enrollmentDate;
 
     @ManyToMany
@@ -36,8 +38,11 @@ public class Enrollment {
             return;
         }
         int total = course.getMaterials().size();
-        int completed = completedMaterials.size();
-        this.progressPercentage = (completed * 100) / total;
+        int done = completedMaterials.size();
+        this.progressPercentage = (done * 100) / total;
+        if (this.progressPercentage >= 100) {
+            this.completed = true;
+        }
     }
 
     @PrePersist
@@ -58,6 +63,9 @@ public class Enrollment {
 
     public Integer getProgressPercentage() { return progressPercentage; }
     public void setProgressPercentage(Integer progressPercentage) { this.progressPercentage = progressPercentage; }
+
+    public boolean isCompleted() { return completed; }
+    public void setCompleted(boolean completed) { this.completed = completed; }
 
     public LocalDateTime getEnrollmentDate() { return enrollmentDate; }
     public void setEnrollmentDate(LocalDateTime enrollmentDate) { this.enrollmentDate = enrollmentDate; }
