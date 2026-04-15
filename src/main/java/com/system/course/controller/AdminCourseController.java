@@ -7,6 +7,7 @@ import com.system.course.entity.User;
 import com.system.course.repository.CourseRepository;
 import com.system.course.repository.StudyMaterialRepository;
 import com.system.course.repository.UserRepository;
+import com.system.course.repository.EnrollmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -146,5 +147,17 @@ public class AdminCourseController {
             model.addAttribute("instructors", instructors);
             return "admin_course_form";
         }
+    }
+
+    @Autowired
+    private EnrollmentRepository enrollmentRepository;
+
+    @PostMapping("/delete/{id}")
+    public String deleteCourse(@PathVariable Long id) {
+        Course course = courseRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid course ID: " + id));
+        enrollmentRepository.deleteByCourse(course);
+        courseRepository.delete(course);
+        return "redirect:/admin/courses?success=Course deleted successfully";
     }
 }

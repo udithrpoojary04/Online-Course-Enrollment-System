@@ -18,4 +18,6 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, Long> {
     long countByStudent(User student);
     @org.springframework.transaction.annotation.Transactional
     void deleteByStudent(User student);
+    @org.springframework.transaction.annotation.Transactional
+    void deleteByCourse(Course course);
 }
