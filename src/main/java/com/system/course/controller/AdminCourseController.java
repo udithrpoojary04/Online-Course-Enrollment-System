@@ -115,7 +115,6 @@ public class AdminCourseController {
             existingCourse.setTitle(courseForm.getTitle());
             existingCourse.setDescription(courseForm.getDescription());
             existingCourse.setPrice(courseForm.getPrice());
-            existingCourse.setDurationInWeeks(courseForm.getDurationInWeeks());
             existingCourse.setInstructor(instructor);
 
             // Clear old materials and add new ones

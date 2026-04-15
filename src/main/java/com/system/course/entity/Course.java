@@ -22,7 +22,6 @@ public class Course {
     
     private BigDecimal price;
     
-    private Integer durationInWeeks;
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
     private java.util.List<StudyMaterial> materials = new java.util.ArrayList<>();
@@ -44,8 +43,6 @@ public class Course {
     public BigDecimal getPrice() { return price; }
     public void setPrice(BigDecimal price) { this.price = price; }
 
-    public Integer getDurationInWeeks() { return durationInWeeks; }
-    public void setDurationInWeeks(Integer durationInWeeks) { this.durationInWeeks = durationInWeeks; }
 
     public java.util.List<StudyMaterial> getMaterials() { return materials; }
     public void setMaterials(java.util.List<StudyMaterial> materials) { this.materials = materials; }

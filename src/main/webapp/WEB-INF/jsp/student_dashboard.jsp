@@ -409,7 +409,7 @@
                                 <div class="col-md-6">
                                     <div class="card bg-transparent border border-secondary h-100 p-3" style="border-radius: 14px;">
                                         <h5 class="card-title text-white fw-bold mb-1">${course.title}</h5>
-                                        <p class="text-muted small mb-2">By Prof. ${course.instructor.fullName} | ${course.durationInWeeks} weeks</p>
+                                        <p class="text-muted small mb-2">By Prof. ${course.instructor.fullName}</p>
                                         <p class="card-text mb-3" style="font-size: 0.9em; flex-grow: 1;">${course.description}</p>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <span class="text-white fw-bold">₹${course.price}</span>

@@ -69,15 +69,9 @@
                         <textarea class="form-control" id="description" name="description" rows="4" placeholder="Detailed description of the course content...">${course.description}</textarea>
                     </div>
 
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="durationInWeeks" class="form-label">Duration (in weeks)</label>
-                            <input type="number" class="form-control" id="durationInWeeks" name="durationInWeeks" required min="1" value="${course.durationInWeeks}">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="price" class="form-label">Price (₹)</label>
-                            <input type="number" step="0.01" class="form-control" id="price" name="price" required min="0" value="${course.price}">
-                        </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price (₹)</label>
+                        <input type="number" step="0.01" class="form-control" id="price" name="price" required min="0" value="${course.price}">
                     </div>
 
                     <div class="mb-4">

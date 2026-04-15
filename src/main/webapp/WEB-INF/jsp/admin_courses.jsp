@@ -65,7 +65,6 @@
                                 <th>ID</th>
                                 <th>Course Title</th>
                                 <th>Instructor</th>
-                                <th>Duration</th>
                                 <th>Price</th>
                                 <th>Actions</th>
                             </tr>
@@ -76,7 +75,6 @@
                                     <td>${course.id}</td>
                                     <td class="fw-bold" style="color: var(--text-main);">${course.title}</td>
                                     <td>${course.instructor != null ? course.instructor.fullName : 'Unassigned'}</td>
-                                    <td>${course.durationInWeeks} wks</td>
                                     <td>₹${course.price}</td>
                                     <td>
                                         <a href="/admin/courses/edit/${course.id}" class="btn btn-sm btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem; border-radius: 10px;">✏️ Edit</a>
@@ -85,7 +83,7 @@
                             </c:forEach>
                             <c:if test="${empty courses}">
                                 <tr>
-                                    <td colspan="6" class="text-center py-4" style="color: var(--text-muted);">No courses found. Click 'Add New Course' to begin.</td>
+                                    <td colspan="5" class="text-center py-4" style="color: var(--text-muted);">No courses found. Click 'Add New Course' to begin.</td>
                                 </tr>
                             </c:if>
                         </tbody>
