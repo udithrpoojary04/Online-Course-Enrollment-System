@@ -180,9 +180,8 @@
         }
 
         .print-btn-container {
-            position: absolute;
-            top: -60px;
-            right: 0;
+            text-align: right;
+            margin-bottom: 15px;
         }
 
         .btn-print {
