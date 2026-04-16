@@ -352,7 +352,7 @@
             <div class="col-md-4">
                 <div class="dashboard-card text-center">
                     <h5>Certificates</h5>
-                    <div class="stat-value text-warning">0</div>
+                    <div class="stat-value text-warning">${completedCourseCount != null ? completedCourseCount : 0}</div>
                 </div>
             </div>
         </div>
@@ -390,7 +390,12 @@
                                                 <span class="badge bg-success ms-2">✓ Completed</span>
                                             </c:if>
                                         </td>
-                                        <td><a href="/student/course/${enrollment.course.id}" class="btn btn-sm btn-primary">${enrollment.completed ? 'Review' : 'Go to Course'}</a></td>
+                                        <td>
+                                            <a href="/student/course/${enrollment.course.id}" class="btn btn-sm btn-primary">${enrollment.completed ? 'Review' : 'Go to Course'}</a>
+                                            <c:if test="${enrollment.completed}">
+                                                <a href="/student/certificate/${enrollment.course.id}" class="btn btn-sm btn-warning ms-1" target="_blank">Certificate</a>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                             </tbody>
