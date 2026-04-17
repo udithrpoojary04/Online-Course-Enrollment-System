@@ -1,6 +1,6 @@
 # Online Course Enrollment System
 
-A full-stack web application built with **Spring Boot** that allows students to browse and enroll in courses, instructors to manage course content, and administrators to oversee the entire platform.
+A **Spring Boot** web app for course browsing, enrollment, and role-based management.
 
 ---
 
