@@ -250,7 +250,7 @@
             <a class="navbar-brand" href="#">Elite Academy</a>
             <div class="d-flex align-items-center">
                 <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
-                <span class="text-white me-3" style="font-weight: 600;">Welcome, ${user.fullName}</span>
+                <span class="me-3" style="color: var(--text-main); font-weight: 600;">Welcome, ${user.fullName}</span>
                 <form action="/logout" method="post">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
@@ -471,6 +471,12 @@
             </div>
         </div>
     </div>
+
+    <footer class="frontend-footer">
+        <div class="container text-center">
+            <p>&copy; 2026 Elite Academy. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>

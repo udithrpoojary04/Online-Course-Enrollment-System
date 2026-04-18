@@ -810,6 +810,25 @@ hr {
 }
 
 /* ============================================
+   Frontend Footer
+   ============================================ */
+.frontend-footer {
+  margin-top: auto;
+  padding: 1.5rem 0;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--navbar-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: all 0.35s ease;
+  z-index: 10;
+}
+.frontend-footer p {
+  margin: 0;
+}
+
+/* ============================================
    Scrollbar — Dark Custom
    ============================================ */
 ::-webkit-scrollbar {
