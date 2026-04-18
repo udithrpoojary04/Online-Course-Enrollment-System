@@ -472,9 +472,32 @@
         </div>
     </div>
 
+    <!-- Spacer for fixed footer -->
+    <div style="height: 240px;"></div>
+
     <footer class="frontend-footer">
-        <div class="container text-center">
-            <p>&copy; 2026 Elite Academy. All rights reserved.</p>
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="footer-heading">Elite Academy</h5>
+                    <p class="small text-muted mb-0">Empowering your future with premium online education. Learn from the best instructors around the globe.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="/student/dashboard" class="footer-link">My Dashboard</a>
+                    <a href="#" class="footer-link">Available Courses</a>
+                    <a href="#" class="footer-link">Certificates</a>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">Terms of Service</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top" style="border-color: var(--navbar-border) !important;">
+                <p class="small">&copy; 2026 Elite Academy. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 

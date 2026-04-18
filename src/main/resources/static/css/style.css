@@ -813,19 +813,39 @@ hr {
    Frontend Footer
    ============================================ */
 .frontend-footer {
-  margin-top: auto;
-  padding: 1.5rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2.5rem 0 1.5rem 0;
   background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--navbar-border);
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   transition: all 0.35s ease;
-  z-index: 10;
+  z-index: 1030;
+  box-shadow: 0 -4px 30px var(--shadow-color);
 }
 .frontend-footer p {
   margin: 0;
+}
+.footer-heading {
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+.footer-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.footer-link:hover {
+  color: var(--primary);
 }
 
 /* ============================================
