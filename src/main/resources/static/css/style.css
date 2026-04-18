@@ -514,12 +514,21 @@ a.custom-link:hover {
    Navbar — Glass Dark
    ============================================ */
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1040;
   background: var(--navbar-bg) !important;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--navbar-border);
   box-shadow: 0 4px 30px var(--shadow-color);
   padding: 1rem 0;
+}
+
+body:has(.navbar) {
+  padding-top: 100px; /* Offset for fixed navbar */
 }
 
 .navbar-brand {
