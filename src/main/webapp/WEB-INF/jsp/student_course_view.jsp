@@ -135,8 +135,6 @@
         </div>
     </div>
 
-    <!-- Spacer for fixed footer -->
-    <div style="height: 240px;"></div>
 
     <footer class="frontend-footer">
         <div class="container">
