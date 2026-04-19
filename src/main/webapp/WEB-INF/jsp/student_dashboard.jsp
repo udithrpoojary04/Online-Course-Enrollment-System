@@ -314,7 +314,7 @@
         </div>
     </div>
 
-    <div class="container mb-5">
+    <div class="container mb-5 flex-grow-1 d-flex flex-column">
 
         <!-- Alerts -->
         <c:if test="${param.enrolled != null}">

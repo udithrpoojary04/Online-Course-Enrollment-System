@@ -61,7 +61,7 @@
         </div>
     </nav>
 
-    <div class="container mb-5">
+    <div class="container mb-5 flex-grow-1 d-flex flex-column">
         <div class="row">
             <div class="col-md-9 mx-auto">
                 <div class="dashboard-card mb-4">

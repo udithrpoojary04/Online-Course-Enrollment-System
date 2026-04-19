@@ -4,6 +4,10 @@
    GLOBAL DARK THEME — Command Center Aesthetic
    ============================================ */
 
+html {
+  height: 100%;
+}
+
 :root {
   --primary: #ffb066;
   --primary-deep: #f0944d;
