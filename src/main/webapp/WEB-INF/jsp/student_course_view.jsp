@@ -150,12 +150,16 @@
                     <a href="/student/dashboard" class="footer-link">My Dashboard</a>
                     <a href="#" class="footer-link">Available Courses</a>
                     <a href="#" class="footer-link">Certificates</a>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Blog</a>
                 </div>
                 <div class="col-md-4">
                     <h5 class="footer-heading">Support</h5>
                     <a href="#" class="footer-link">Help Center</a>
                     <a href="#" class="footer-link">Terms of Service</a>
                     <a href="#" class="footer-link">Privacy Policy</a>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">FAQ</a>
                 </div>
             </div>
             <div class="text-center pt-3 border-top" style="border-color: var(--navbar-border) !important;">
