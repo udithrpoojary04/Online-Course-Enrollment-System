@@ -68,7 +68,7 @@ html {
   --scrollbar-hover: rgba(0, 0, 0, 0.25);
   --hr-color: rgba(0, 0, 0, 0.1);
   --orb-opacity: 0.25;
-  --grid-line: rgba(0,0,0,0.03);
+  --grid-line: rgba(0,0,0,0.08);
 }
 
 /* Theme transition */
