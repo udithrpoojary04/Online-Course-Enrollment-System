@@ -247,7 +247,10 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="#">Elite Academy</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="me-2" style="color: var(--primary);"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                Elite Academy
+            </a>
             <div class="d-flex align-items-center">
                 <button id="themeToggleBtn" class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
                 <span class="me-3" style="color: var(--text-main); font-weight: 600;">Welcome, ${user.fullName}</span>
