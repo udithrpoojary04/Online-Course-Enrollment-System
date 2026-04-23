@@ -49,7 +49,7 @@
         </div>
     </nav>
 
-    <div class="container mb-5">
+    <div class="container mb-5 flex-grow-1 d-flex flex-column">
         <div class="row">
             <div class="col-md-12">
                 <div class="dashboard-card">
@@ -102,6 +102,32 @@
             </div>
         </div>
     </div>
+    <footer class="frontend-footer">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="footer-heading">Elite Academy</h5>
+                    <p class="small text-muted mb-0">Empowering your future with premium online education. Manage the platform efficiently.</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="/admin/dashboard" class="footer-link">Admin Dashboard</a>
+                    <a href="/admin/users" class="footer-link">Manage Users</a>
+                    <a href="/admin/courses" class="footer-link">Review Courses</a>
+                    <a href="/admin/instructors" class="footer-link">Manage Instructors</a>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-heading">Support</h5>
+                    <a href="#" class="footer-link">Help Center</a>
+                    <a href="#" class="footer-link">System Logs</a>
+                    <a href="#" class="footer-link">Contact Support</a>
+                </div>
+            </div>
+            <div class="text-center pt-3 border-top" style="border-color: var(--navbar-border) !important;">
+                <p class="small">&copy; 2026 Elite Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
