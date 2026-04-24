@@ -217,9 +217,7 @@ body, .dashboard-card, .glass-panel, .navbar, .form-control, .table, .btn-second
   color: var(--primary-deep);
 }
 [data-theme="light"] .admin-grid-overlay {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+  background-image: none;
 }
 
 body {
