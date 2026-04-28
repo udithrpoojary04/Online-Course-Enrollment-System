@@ -141,6 +141,15 @@ body, .dashboard-card, .glass-panel, .navbar, .form-control, .table, .btn-second
 [data-theme="light"] .btn-danger:hover {
   background: rgba(239, 68, 68, 0.18) !important;
 }
+[data-theme="light"] .btn-accent {
+  background: rgba(167, 139, 250, 0.1) !important;
+  border: 1px solid rgba(167, 139, 250, 0.3) !important;
+  color: #7c3aed !important;
+}
+[data-theme="light"] .btn-accent:hover {
+  background: rgba(167, 139, 250, 0.18) !important;
+  color: #6d28d9 !important;
+}
 [data-theme="light"] .alert-danger {
   background: rgba(239, 68, 68, 0.08) !important;
   color: #dc2626 !important;
@@ -469,6 +478,28 @@ body {
 }
 
 .btn-danger:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-accent {
+  background: rgba(167, 139, 250, 0.15) !important;
+  border: 1px solid rgba(167, 139, 250, 0.3) !important;
+  color: #c4b5fd !important;
+  border-radius: 14px;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-accent:hover {
+  background: rgba(167, 139, 250, 0.25) !important;
+  color: #ddd6fe !important;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 25px -5px rgba(167, 139, 250, 0.2);
+}
+
+.btn-accent:active {
   transform: translateY(0) scale(0.98);
 }
 
